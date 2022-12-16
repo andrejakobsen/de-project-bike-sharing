@@ -62,7 +62,7 @@ data "aws_ami" "ubuntu" {
 
   filter {
     name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-20220420"]
+    values = ["ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"]
   }
 
   filter {
@@ -131,12 +131,12 @@ resource "aws_budgets_budget" "ec2" {
   limit_amount      = "5"
   limit_unit        = "USD"
   time_period_end   = "2087-06-15_00:00"
-  time_period_start = "2022-10-22_00:00"
+  time_period_start = "2022-12-16_00:00"
   time_unit         = "MONTHLY"
 
   notification {
     comparison_operator        = "GREATER_THAN"
-    threshold                  = 100
+    threshold                  = 50
     threshold_type             = "PERCENTAGE"
     notification_type          = "FORECASTED"
     subscriber_email_addresses = [var.alert_email_id]
