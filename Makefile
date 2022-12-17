@@ -22,7 +22,7 @@ pytest:
 	docker exec webserver pytest -p no:warnings -v /opt/airflow/tests
 
 format:
-	docker exec webserver python -m black -S --line-length 79 .
+	docker exec webserver python -m black -S .
 
 isort:
 	docker exec webserver isort .
@@ -40,6 +40,9 @@ ci: isort format type lint pytest
 
 tf-init:
 	terraform -chdir=./terraform init
+
+tf-plan:
+	terraform -chdir=./terraform plan
 
 infra-up:
 	terraform -chdir=./terraform apply
