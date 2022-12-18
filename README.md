@@ -50,6 +50,7 @@ make cloud-metabase # this command will forward Metabase port from EC2 to your m
 
 **Project structure**
 ![Project structure](/assets/images/proj_1.png)
+![ER diagram](/assets/images/er_diagram.png)
 ![Project structure - GH actions](/assets/images/proj_2.png)
 
 Database migrations can be created as shown below.

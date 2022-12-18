@@ -60,10 +60,10 @@ db-migration:
 	@read -p "Enter migration name:" migration_name; docker exec webserver yoyo new ./migrations -m "$$migration_name"
 
 warehouse-migration:
-	docker exec webserver yoyo develop --no-config-file --database postgres://sdeuser:sdepassword1234@warehouse:5432/finance ./migrations
+	docker exec webserver yoyo develop --no-config-file --database postgres://andre:andre@warehouse:5432/bike-sharing ./migrations
 
 warehouse-rollback:
-	docker exec webserver yoyo rollback --no-config-file --database postgres://sdeuser:sdepassword1234@warehouse:5432/finance ./migrations
+	docker exec webserver yoyo rollback --no-config-file --database postgres://andre:andre@warehouse:5432/bike-sharing ./migrations
 
 ####################################################################################################################
 # Port forwarding to local machine
