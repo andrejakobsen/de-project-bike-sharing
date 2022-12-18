@@ -22,7 +22,7 @@ pytest:
 	docker exec webserver pytest -p no:warnings -v /opt/airflow/tests
 
 format:
-	docker exec webserver python -m black -S --line-length 79 .
+	docker exec webserver python -m black -S .
 
 isort:
 	docker exec webserver isort .
@@ -41,6 +41,9 @@ ci: isort format type lint pytest
 tf-init:
 	terraform -chdir=./terraform init
 
+tf-plan:
+	terraform -chdir=./terraform plan
+
 infra-up:
 	terraform -chdir=./terraform apply
 
@@ -57,10 +60,10 @@ db-migration:
 	@read -p "Enter migration name:" migration_name; docker exec webserver yoyo new ./migrations -m "$$migration_name"
 
 warehouse-migration:
-	docker exec webserver yoyo develop --no-config-file --database postgres://sdeuser:sdepassword1234@warehouse:5432/finance ./migrations
+	docker exec webserver yoyo develop --no-config-file --database postgres://andre:andre@warehouse:5432/bike-sharing ./migrations
 
 warehouse-rollback:
-	docker exec webserver yoyo rollback --no-config-file --database postgres://sdeuser:sdepassword1234@warehouse:5432/finance ./migrations
+	docker exec webserver yoyo rollback --no-config-file --database postgres://andre:andre@warehouse:5432/bike-sharing ./migrations
 
 ####################################################################################################################
 # Port forwarding to local machine

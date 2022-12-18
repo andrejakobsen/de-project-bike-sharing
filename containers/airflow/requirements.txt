@@ -7,3 +7,5 @@ pytest==7.0.1
 pytest-mock==3.6.1
 apache-airflow-client==2.3.0
 yoyo-migrations==8.0.0
+# numpy==1.23.5
+# pandas==1.5.2
